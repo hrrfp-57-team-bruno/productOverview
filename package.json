@@ -1,0 +1,27 @@
+{
+  "name": "productoverviewsql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hrrfp-57-team-bruno/productOverviewSQL.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hrrfp-57-team-bruno/productOverviewSQL/issues"
+  },
+  "homepage": "https://github.com/hrrfp-57-team-bruno/productOverviewSQL#readme",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "express": "^4.17.2",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.15"
+  }
+}
