@@ -19,6 +19,7 @@
   "homepage": "https://github.com/hrrfp-57-team-bruno/productOverviewSQL#readme",
   "dependencies": {
     "axios": "^0.24.0",
+    "cors": "^2.8.5",
     "express": "^4.17.2",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",

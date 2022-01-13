@@ -15,7 +15,7 @@ router.get('/products', (req, res) => {
       res.status(400);
     } else {
       // console.log(data.rows);
-      res.send(data.rows);
+      res.send(data);
     }
   });
 });
