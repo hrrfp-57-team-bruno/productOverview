@@ -1,7 +1,3 @@
 node_modules
 server/config.js
-database/features.sql
-database/photos.sql
-database/products.sql
-database/skus.sql
-database/styles.sql
+junk
