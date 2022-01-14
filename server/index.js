@@ -1,11 +1,11 @@
 const express = require('express');
 const morgan = require('morgan');
-const router = require('./router');
 const cors = require('cors');
+const router = require('./router');
 
 const app = express();
-app.use(cors());
 app.use(morgan('dev'));
+app.use(cors());
 //========Test response time========
 // const newrelic = require('newrelic');
 app.get('/api/test', (req, res) => {

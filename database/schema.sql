@@ -89,6 +89,21 @@ CSV HEADER;
 CREATE INDEX style_idx ON styles (style_id);
 CREATE INDEX product_idx ON styles (product_id);
 
+-- ========================TABLE RELATED ======================================
+
+DROP TABLE IF EXISTS related CASCADE;
+CREATE TABLE related (
+  id SERIAL PRIMARY KEY,
+  current_product_id INT NOT NULL,
+  related_product_id INT NOT NULL,
+  FOREIGN KEY (current_product_id) REFERENCES products (id)
+);
+
+COPY related(id, current_product_id, related_product_id)
+FROM '/Users/hathadam/Google Drive/sdc/data/related.csv'
+DELIMITER ','
+CSV HEADER;
+CREATE INDEX related_productId_index ON related (current_product_id);
 
 -- ========================USING mySQL ======================================
 -- SET GLOBAL local_infile=1;
