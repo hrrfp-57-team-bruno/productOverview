@@ -8,13 +8,13 @@ router.get('/products', (req, res) => {
     page = 1;
   }
   if (!count) {
-    count = 5;
+    count = 300;
   }
   controller.getAllProducts(page, count, (error, data) => {
     if (error) {
       res.status(400);
     } else {
-      // console.log(data.rows);
+      // res.send('get from api/product:: ');
       res.send(data);
     }
   });
@@ -23,6 +23,7 @@ router.get('/products', (req, res) => {
 router.get('/products/:product_id/styles', (req, res) => {
   const id = req.params.product_id;
   controller.getProductInfo(id, (error, data) => {
+    // console.log(data.product_id.toString())
     if (error) {
       res.status(400);
     } else {

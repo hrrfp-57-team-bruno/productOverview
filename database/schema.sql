@@ -2,18 +2,18 @@
 DROP TABLE IF EXISTS features CASCADE;
 CREATE TABLE features(
   feature_id SERIAL NOT NULL,
-  product_id INT NOT NULL,
+  id INT NOT NULL,
   feature VARCHAR(255),
   value VARCHAR(100),
   PRIMARY KEY (feature_id),
-  FOREIGN KEY (product_id) REFERENCES products (product_id)
+  FOREIGN KEY (id) REFERENCES products (id)
 );
 
-COPY features(feature_id, product_id, feature, value)
+COPY features(feature_id, id, feature, value)
 FROM '/Users/hathadam/Google Drive/sdc/data/features.csv'
 DELIMITER ','
 CSV HEADER;
-CREATE INDEX ON features (product_id);
+CREATE INDEX ON features (id);
 
 -- ========================TABLE PHOTOS======================================
 DROP TABLE IF EXISTS photos CASCADE;
@@ -37,20 +37,20 @@ CREATE SCHEMA IF NOT EXISTS sdc;
 
 DROP TABLE IF EXISTS products CASCADE;
 CREATE TABLE products(
-  product_id SERIAL NOT NULL,
+  id SERIAL NOT NULL,
   name VARCHAR(30),
   slogan VARCHAR(255),
   description TEXT,
   category VARCHAR(30),
   default_price INT,
-  PRIMARY KEY (product_id)
+  PRIMARY KEY (id)
 );
 
-COPY products(product_id, name, slogan, description, category, default_price)
+COPY products(id, name, slogan, description, category, default_price)
 FROM '/Users/hathadam/Google Drive/sdc/data/product.csv'
 DELIMITER ','
 CSV HEADER;
-CREATE INDEX ON products (product_id);
+CREATE INDEX ON products (id);
 
 -- ========================TABLE SKUS ======================================
 DROP TABLE IF EXISTS skus CASCADE;
@@ -78,7 +78,7 @@ CREATE TABLE styles(
   original_price INT,
   default_style BOOLEAN,
   PRIMARY KEY (style_id),
-  FOREIGN KEY (product_id) REFERENCES products (product_id)
+  FOREIGN KEY (product_id) REFERENCES products (id)
 );
 
 COPY styles(style_id, product_id, name, sale_price, original_price, default_style)

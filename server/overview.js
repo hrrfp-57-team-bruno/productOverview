@@ -3,17 +3,18 @@ const dbConfig = require('./config');
 
 const pool = new Pool(dbConfig);
 
-
+//get all products
 module.exports.getAllProducts = (page, count, cb) => {
-  // console.log(page, count);
   const query = `SELECT *
                   FROM products
-                  WHERE product_id BETWEEN ${page} AND ${count * page}`;
+                  WHERE id BETWEEN ${page} AND ${count * page}`;
   pool.query(query, (err, res) =>{
     if (err) {
-      console.log('error frin getAllProducts:: ', err);
       cb(err, null);
     } else {
+      res.rows.forEach(product => {
+        product.default_price = product.default_price.toFixed(2);
+      })
       cb(null, res.rows);
     }
   })
@@ -50,9 +51,15 @@ module.exports.getProductInfo = (pId, cb) => {
 
   pool.query(queryInfo, (err, res) => {
     if (err) {
-      console.log('Error from productId/styles:: ', err);
       cb(err, null);
     } else {
+      res.rows[0].product_id = res.rows[0].product_id.toString();
+      res.rows[0].results.forEach(style => {
+        style.original_price = style.original_price.toFixed(2);
+        if(style.sale_price !== null){
+          style.sale_price = style.sale_price.toFixed(2);
+        }
+      })
       cb(null, res.rows[0]);
     }
   });
@@ -60,12 +67,7 @@ module.exports.getProductInfo = (pId, cb) => {
 
 module.exports.getSingleProduct = (pId, cb) => {
   const querySingleProd = `SELECT
-                  products.product_id,
-                  products.name,
-                  products.slogan,
-                  products.description,
-                  products.category,
-                  products.default_price,
+                  products.*,
                     json_agg(
                       json_build_object(
                         'feature', features.feature,
@@ -75,9 +77,9 @@ module.exports.getSingleProduct = (pId, cb) => {
                   AS features
                   FROM products
                   LEFT JOIN features
-                  ON products.product_id = features.product_id
-                  WHERE products.product_id = ${pId}
-                  GROUP BY products.product_id,
+                  ON products.id = features.id
+                  WHERE products.id = ${pId}
+                  GROUP BY products.id,
                     products.name,
                     products.slogan,
                     products.description,
@@ -86,15 +88,15 @@ module.exports.getSingleProduct = (pId, cb) => {
 
   pool.query(querySingleProd, (err, res) => {
     if (err) {
-      console.log("error from getSingleProduct:: ", err);
       cb(err, null);
     } else {
+      res.rows[0].default_price = res.rows[0].default_price.toFixed(2);
       cb(null,res.rows[0])
     }
   })
 };
 
-
+/////////////////////trying other way//////////////////////////
 // using asyn await:::
 
 // module.exports.getAllProducts = async (page, count, cb) => {
