@@ -47,19 +47,11 @@ module.exports.getProductInfo = (pId, cb) => {
                     )) as results FROM styles
                         WHERE styles.product_id = ${pId}
                           GROUP BY product_id`;
-
   pool.query(queryInfo, (err, res) => {
     if (err) {
       cb(err, null);
     } else {
-      res.rows[0].product_id = res.rows[0].product_id.toString();
-      res.rows[0].results.forEach(style => {
-        style.original_price = style.original_price.toFixed(2);
-        if(style.sale_price !== null){
-          style.sale_price = style.sale_price.toFixed(2);
-        }
-      })
-      cb(null, res.rows[0]);
+      cb(null, res);
     }
   });
 };

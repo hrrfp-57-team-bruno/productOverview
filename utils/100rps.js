@@ -11,8 +11,8 @@ export const options = {
 
 // const url = 'http://localhost:8000/api/test';
 // const url = 'http://localhost:8000/api/products';
-// const url = 'http://localhost:8000/api/products/1/styles';
-const url = 'http://localhost:8000/api/products/1/related';
+const url = 'http://localhost:8000/api/products/100/styles';
+// const url = 'http://localhost:8000/api/products/1/related';
 // const url = 'http://localhost:8000/api/products/1';
 
 export default function() {
