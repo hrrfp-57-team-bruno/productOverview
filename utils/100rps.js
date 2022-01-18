@@ -5,13 +5,13 @@ import { Counter } from 'k6/metrics';
 export const requests =  new Counter('http_reqs');
 
 export const options = {
-  vus: 100,
-  duration: '15s',
+  vus: 105,
+  duration: '60s',
 }
 
 // const url = 'http://localhost:8000/api/test';
-// const url = 'http://localhost:8000/api/products';
-const url = 'http://localhost:8000/api/products/100/styles';
+const url = 'http://localhost:8000/api/products';
+// const url = 'http://localhost:8000/api/products/40344/styles';
 // const url = 'http://localhost:8000/api/products/1/related';
 // const url = 'http://localhost:8000/api/products/1';
 

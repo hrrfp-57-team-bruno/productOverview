@@ -15,6 +15,11 @@ app.get('/api/test', (req, res) => {
     res.send(`Hello from /api/test. You received a response in ${randNum.toFixed(2)} seconds`);
   }, randTimeInMs)
 });
+
+//========Loader IO========
+// app.get('/loaderio-9619b42ac20175ad99bff04b15088e70.txt', (req, res) => {
+//     res.send('loaderio-9619b42ac20175ad99bff04b15088e70.txt');
+// });
 //========Test response time========
 
 app.use('/api', router);
