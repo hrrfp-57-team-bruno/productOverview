@@ -18,8 +18,18 @@ app.get('/api/test', (req, res) => {
 
 //========Loader IO========
 // app.get('/loaderio-9619b42ac20175ad99bff04b15088e70.txt', (req, res) => {
-//     res.send('loaderio-9619b42ac20175ad99bff04b15088e70.txt');
+//     res.sendFile('/Users/hathadam/Google Drive/sdc/productOverviewSQL/loaderio-9619b42ac20175ad99bff04b15088e70.txt');
 // });
+
+// ========Loader IO for AWS Deployment========
+// app.get('/loaderio-cea2d99725d9edf32c2f0f701706bb9f.txt', (req, res) => {
+//   res.sendFile('/home/ubuntu/loaderio-cea2d99725d9edf32c2f0f701706bb9f.txt');
+// });
+
+app.get('/loaderio-480af182666c09c917299c9387574c69.txt', (req, res) => {
+  res.sendFile('/home/ubuntu/loader.txt');
+});
+
 //========Test response time========
 
 app.use('/api', router);

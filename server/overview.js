@@ -1,7 +1,21 @@
 const { Pool } = require('pg');
 const dbConfig = require('./config');
 
-const pool = new Pool(dbConfig);
+//running locally
+// const pool = new Pool({
+//   user: 'hathadam',
+//   host: 'localhost',
+//   database:'postgres',
+//   port: 5432
+// });
+
+on aws instances
+const pool = new Pool({
+  user: 'postgres',
+  database:'postgres',
+  password: 'f',
+  port: 5432
+});
 
 module.exports.getAllProducts = (page, count, cb) => {
   const query = `SELECT *
@@ -100,3 +114,6 @@ module.exports.getRelatedProduct = (pId, cb) => {
     }
   })
 };
+
+
+// 'SELECT products.*, json_agg(json_build_object('feature', features.feature,'value', features.value)) AS features FROM products LEFT JOIN features ON products.id = features.id WHERE products.id = 1 GROUP BY products.id,products.name, products.slogan, products.description, products.category,products.default_price';
