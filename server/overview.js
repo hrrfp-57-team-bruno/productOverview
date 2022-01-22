@@ -1,5 +1,5 @@
 const { Pool } = require('pg');
-const dbConfig = require('./config');
+// const dbConfig = require('./config');
 
 //running locally
 // const pool = new Pool({
@@ -9,7 +9,7 @@ const dbConfig = require('./config');
 //   port: 5432
 // });
 
-on aws instances
+// on aws instances
 const pool = new Pool({
   user: 'postgres',
   database:'postgres',
