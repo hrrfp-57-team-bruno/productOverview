@@ -16,11 +16,19 @@
 ![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)
 
 ##  Project Overview
-  - Take existing back-end infrastructure and convert to a microservice architecture.
-  - Handle over 1k request per second for all crud operations.
+  - Developed a micro-service architecture RESTful API to replace the existing monolithic application.
+  - Handle over 5k requests per second for all CRUD operations.
+
+## Getting Started
+1. Download dependencies with:
+   > `npm install`
+2. Run server with:
+   > `npm run server`
+3. Connect with:
+   > `http://3.20.234.75/`
 
 ## Setup
-  - 4 servers running on AWS Micro Ec2 instances.
+  - 4 servers running on AWS Micro EC2 instances.
   - 1 instance running NGINX with least connection load balancing, cacheing enabled.
   - 1 instance hosting PostgreSQL database.
 
