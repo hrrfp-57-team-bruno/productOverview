@@ -20,5 +20,5 @@
    - New Relic + Loader.io to test infrastructure under load.
 
 ## Results
-![10k](docs/10k_RPS.png)
+![10k](docs/10k_RPS_Styles.png)
 
